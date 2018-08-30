@@ -4,13 +4,26 @@ const axios = require('axios');
 const App = Express();
 const PORT = 3001;
 
+let peopleCache = [],
+    indexedPeople = {},
+    result = [];
+
+// Populate cache on initialization
+getPeople();
+
 // Routes
 App.get('/', (req, res) => res.send('Growth Interview'));
 
-App.get('/people', (req, res) => {
+App.get('/people/:sortBy?', async (req, res) => {
   const sortBy = req.params.sortBy || null;
-  const result = [];
-  res.send('people')
+  if (sortBy) {
+    if (sortBy !== 'name' &&
+      sortBy !== 'mass' &&
+      sortBy !== 'height'
+    ) return res.json({message:'invalid sort parameter'})
+  }
+  let result = await sendPeople(sortBy);
+  res.json(result)
 });
 
 App.get('/planets', (req, res) => {
@@ -22,6 +35,48 @@ App.listen(PORT, () => console.log(`listening on port: ${PORT}`));
 
 
 // API Functions
+
+async function getPeople(page = 1, result = []) {
+  try {
+    let {data} = await axios.get(`https://swapi.co/api/people/?page=${page}`);
+    data.results.forEach(person => result.push(person));
+    if (data.next !== null) {
+      page++;
+      return await getPeople(page, result)
+    } else {
+      peopleCache = result;
+      console.log("cache is populated")
+    }
+    indexedPeople = result.reduce(function (acc, next, i) {
+      acc[i + 1] = next.name;
+      return acc;
+    }, {});
+    return result;
+  } catch (e) {
+    console.log(e)
+  }
+}
+
+async function sendPeople(sortBy, result = [], page = 1) {
+  if (peopleCache.length) {
+    return sort(peopleCache, sortBy)
+  } else {
+    try{
+      let {data} = await axios.get(`https://swapi.co/api/people/?page=${page}`);
+      data.results.forEach(person => result.push(person));
+      if (data.next !== null) {
+        page++;
+        return await sendPeople(sortBy, result, page);
+      } else {
+        peopleCache = result;
+        return sort(result, sortBy)
+      }
+    } catch (e) {
+      console.log(e)
+    }
+  }
+}
+
 function sort(people, attribute) {
   switch (attribute) {
     case 'name':
@@ -69,6 +124,8 @@ function listen (port) {
 }
 
 module.exports = {
+  sendPeople,
+  getPeople,
   sort,
   close,
   listen
