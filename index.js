@@ -7,9 +7,6 @@ const PORT = 3001;
 let peopleCache = [],
   indexedPeople = {};
 
-// Populate cache on initialization
-getPeople();
-
 // Routes
 App.get('/', (req, res) => res.send('Growth Interview'));
 
@@ -114,18 +111,13 @@ function sort(people, attribute) {
       });
       break;
     case 'mass':
-      const unknownMass = [],
-        result = [];
-      people.forEach(person => {
-        if (person.mass === 'unknown') {
-          unknownMass.push(person);
-        } else {
-          result.push(person);
-        }
+      return people.sort((a, b) => {
+        let aMass = a.mass,
+            bMass = b.mass
+        if(aMass === 'unknown') aMass = 0;
+        if(bMass === 'unknown') bMass = 0;
+        return bMass - aMass;
       });
-      return result.sort((a, b) => {
-        return b.mass - a.mass;
-      }).concat(unknownMass);
       break;
     default:
       return people;
