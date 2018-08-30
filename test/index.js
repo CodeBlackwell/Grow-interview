@@ -1,36 +1,38 @@
-var http = require('http');
-var assert = require('assert');
+const assert = require('assert');
+const axios = require('axios');
+const chai = require('chai');
+const expect = chai.expect;
 
-var server = require('../index.js');
+const server = require('../index.js');
+const PORT = 8081
 
 describe('HTTP Server Test', function() {
-  // The function passed to before() is called before running the test cases.
   before(function() {
-    server.listen(8989);
+    server.listen(PORT);
   });
 
-  // The function passed to after() is called after running the test cases.
   after(function() {
     server.close();
   });
 
-  describe('/', function() {
-    it('should be Hello, Mocha!', function(done) {
-      http.get('http://127.0.0.1:8989', function(response) {
-        // Assert the status code.
-        assert.equal(response.statusCode, 200);
-
-        var body = '';
-        response.on('data', function(d) {
-          body += d;
-        });
-        response.on('end', function() {
-          // Let's wait until we read the response, and then assert the body
-          // is 'Hello, Mocha!'.
-          assert.equal(body, 'Hello, Mocha!');
+  describe('API endpoints', function() {
+    describe('/People', function() {
+      it('should return people', function (done) {
+        axios.get(`http://127.0.0.1:${PORT}/people`).then(result => {
+          expect(result.data).to.equal('people');
           done();
         });
-      });
+      })
+        .timeout(6000)
+    });
+    describe('/Planets', function() {
+      it('should return people', function (done) {
+        axios.get(`http://127.0.0.1:${PORT}/planets`).then(result => {
+          expect(result.data).to.equal('planets');
+          done();
+        });
+      })
+        .timeout(6000)
     });
   });
 });

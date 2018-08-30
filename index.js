@@ -1,16 +1,39 @@
-var http = require('http');
+const Express = require('express');
+const axios = require('axios');
 
-var server = http.createServer(function(req, res) {
-  res.writeHead(200);
-  res.end('Hello, Mocha!');
+const App = Express();
+const PORT = 3001;
+
+// Routes
+App.get('/', (req, res) => res.send('Growth Interview'));
+
+App.get('/people', (req, res) => {
+  const sortBy = req.params.sortBy || null;
+  const result = [];
+  res.send('people')
 });
 
-exports.listen = function(port) {
-  console.log('Listening on: ' + port);
-  server.listen(port);
-};
+App.get('/planets', (req, res) => {
+  const result = [];
+  res.send('planets')
+});
+
+App.listen(PORT, () => console.log(`listening on port: ${PORT}`));
+
+
+// Testing Functions
+httpServer = require('http').createServer(App);
 
 // close destroys the server.
-exports.close = function() {
-  server.close();
+function close() {
+  httpServer.close();
+}
+function listen (port) {
+  console.log('Listening on: ' + port);
+  httpServer.listen(port);
+}
+
+module.exports = {
+  close,
+  listen
 };
