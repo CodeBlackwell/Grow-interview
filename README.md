@@ -1,4 +1,4 @@
-# Growth-interview
+# Grow-interview
 SWAPI Express Backend
 
 - `npm run test` to run the Mocha/Chai tests.
