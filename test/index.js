@@ -1,7 +1,6 @@
 const assert = require('assert');
 const axios = require('axios');
 const chai = require('chai');
-const nock = require('nock');
 const expect = chai.expect;
 
 const people = require('./sample/sample_people');
@@ -38,19 +37,17 @@ describe('HTTP Server Test', function () {
     });
 
     describe('/Planets', function () {
-      it('should return planets', function (done) {
-        axios.get(`http://127.0.0.1:${PORT}/planets`).then(result => {
-          expect(result.data).to.equal('planets');
-          done();
-        });
+      it('should return planets', async function () {
+        let {data} = await axios.get(`http://127.0.0.1:${PORT}/planets`);
+        expect(data.length).to.equal(61);
       })
-        .timeout(6000);
+        .timeout(15000);
     });
   });
 
   describe('API Functions', function () {
     describe('Sort', function () {
-      it('should sort people by name 1234', function (done) {
+      it('should sort people by name', function (done) {
         expect(server.sort(people.unsorted, 'name')).to.deep.equal(people.alphabetically);
         done()
       })
@@ -79,7 +76,7 @@ describe('HTTP Server Test', function () {
         let {data} = await axios.get(`http://127.0.0.1:${PORT}/people`);
         expect(data.length).to.equal(87);
       })
-        .timeout(6000);
+        .timeout(30000);
       it('should accept sorting parameters - Name', async function () {
         let {data} = await axios.get(`http://127.0.0.1:${PORT}/people/name`);
         expect(data[0].name).to.equal("Ackbar");
@@ -95,6 +92,18 @@ describe('HTTP Server Test', function () {
         expect(data[0].name).to.equal("Yarael Poof");
       })
         .timeout(6000);
+    });
+    describe('Get Planets', function () {
+      it('should paginate all (61) results', async function () {
+        let {data} = await axios.get(`http://127.0.0.1:${PORT}/planets`);
+        expect(data.length).to.equal(61);
+      })
+        .timeout(30000);
+      it('should replace NameURLs with actual names of people', async function () {
+        let {data} = await axios.get(`http://127.0.0.1:${PORT}/planets`);
+        expect(data[0].residents[0]).to.equal("Leia Organa");
+      })
+        .timeout(10000);
     });
   });
 });

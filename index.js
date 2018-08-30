@@ -5,8 +5,7 @@ const App = Express();
 const PORT = 3001;
 
 let peopleCache = [],
-    indexedPeople = {},
-    result = [];
+  indexedPeople = {};
 
 // Populate cache on initialization
 getPeople();
@@ -20,19 +19,19 @@ App.get('/people/:sortBy?', async (req, res) => {
     if (sortBy !== 'name' &&
       sortBy !== 'mass' &&
       sortBy !== 'height'
-    ) return res.json({message:'invalid sort parameter'})
+    ) return res.json({message: 'invalid sort parameter'})
   }
   let result = await sendPeople(sortBy);
   res.json(result)
 });
 
-App.get('/planets', (req, res) => {
-  const result = [];
-  res.send('planets')
+App.get('/planets', async (req, res) => {
+  if (!peopleCache.length) peopleCache = await getPeople();
+  let result = await getPlanets();
+  res.json(result)
 });
 
 App.listen(PORT, () => console.log(`listening on port: ${PORT}`));
-
 
 // API Functions
 
@@ -61,7 +60,7 @@ async function sendPeople(sortBy, result = [], page = 1) {
   if (peopleCache.length) {
     return sort(peopleCache, sortBy)
   } else {
-    try{
+    try {
       let {data} = await axios.get(`https://swapi.co/api/people/?page=${page}`);
       data.results.forEach(person => result.push(person));
       if (data.next !== null) {
@@ -77,12 +76,35 @@ async function sendPeople(sortBy, result = [], page = 1) {
   }
 }
 
+async function getPlanets(result = [], page = 1) {
+  try {
+    let {data} = await axios.get(`https://swapi.co/api/planets/?page=${page}`);
+    data.results.forEach(planet => result.push(planet));
+    if (data.next !== null) {
+      page++;
+      return await getPlanets(result, page);
+    } else {
+      result.forEach(planet => {
+        planet.residents = planet.residents.map(resident => {
+          const index = resident.search(/(\d+\/)$/);
+          let residentIndex = Number(resident.slice(index).replace(/\/$/g, ''));
+          resident = indexedPeople[residentIndex];
+          return resident;
+        });
+      });
+      return result;
+    }
+  } catch (e) {
+    console.log(e)
+  }
+}
+
 function sort(people, attribute) {
   switch (attribute) {
     case 'name':
-      return people.sort(function(a, b){
-        if(a.name < b.name) return -1;
-        if(a.name > b.name) return 1;
+      return people.sort(function (a, b) {
+        if (a.name < b.name) return -1;
+        if (a.name > b.name) return 1;
         return 0;
       });
       break;
@@ -118,13 +140,15 @@ httpServer = require('http').createServer(App);
 function close() {
   httpServer.close();
 }
-function listen (port) {
+
+function listen(port) {
   console.log('Listening on: ' + port);
   httpServer.listen(port);
 }
 
 module.exports = {
   sendPeople,
+  getPlanets,
   getPeople,
   sort,
   close,
