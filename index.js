@@ -21,6 +21,41 @@ App.get('/planets', (req, res) => {
 App.listen(PORT, () => console.log(`listening on port: ${PORT}`));
 
 
+// API Functions
+function sort(people, attribute) {
+  switch (attribute) {
+    case 'name':
+      return people.sort(function(a, b){
+        if(a.name < b.name) return -1;
+        if(a.name > b.name) return 1;
+        return 0;
+      });
+      break;
+    case 'height':
+      return people.sort((a, b) => {
+        return b.height - a.height;
+      });
+      break;
+    case 'mass':
+      const unknownMass = [],
+        result = [];
+      people.forEach(person => {
+        if (person.mass === 'unknown') {
+          unknownMass.push(person);
+        } else {
+          result.push(person);
+        }
+      });
+      return result.sort((a, b) => {
+        return b.mass - a.mass;
+      }).concat(unknownMass);
+      break;
+    default:
+      return people;
+  }
+}
+
+
 // Testing Functions
 httpServer = require('http').createServer(App);
 
@@ -34,6 +69,7 @@ function listen (port) {
 }
 
 module.exports = {
+  sort,
   close,
   listen
 };

@@ -1,4 +1,4 @@
-const people = [
+const unsorted = [
   {
     "name": "Luke Skywalker",
     "height": "172",
@@ -29,7 +29,7 @@ const people = [
     ],
     "created": "2014-12-09T13:50:51.644000Z",
     "edited": "2014-12-20T21:17:56.891000Z",
-    "url": "https://swapi.co/api/people/1/"
+    "url": "https://swapi.co/api/unsorted/1/"
   },
   {
     "name": "C-3PO",
@@ -56,7 +56,7 @@ const people = [
     "starships": [],
     "created": "2014-12-10T15:10:51.357000Z",
     "edited": "2014-12-20T21:17:50.309000Z",
-    "url": "https://swapi.co/api/people/2/"
+    "url": "https://swapi.co/api/unsorted/2/"
   },
   {
     "name": "R2-D2",
@@ -84,7 +84,7 @@ const people = [
     "starships": [],
     "created": "2014-12-10T15:11:50.376000Z",
     "edited": "2014-12-20T21:17:50.311000Z",
-    "url": "https://swapi.co/api/people/3/"
+    "url": "https://swapi.co/api/unsorted/3/"
   },
   {
     "name": "Darth Vader",
@@ -111,7 +111,7 @@ const people = [
     ],
     "created": "2014-12-10T15:18:20.704000Z",
     "edited": "2014-12-20T21:17:50.313000Z",
-    "url": "https://swapi.co/api/people/4/"
+    "url": "https://swapi.co/api/unsorted/4/"
   },
   {
     "name": "Leia Organa",
@@ -139,7 +139,7 @@ const people = [
     "starships": [],
     "created": "2014-12-10T15:20:09.791000Z",
     "edited": "2014-12-20T21:17:50.315000Z",
-    "url": "https://swapi.co/api/people/5/"
+    "url": "https://swapi.co/api/unsorted/5/"
   },
   {
     "name": "Owen Lars",
@@ -163,7 +163,7 @@ const people = [
     "starships": [],
     "created": "2014-12-10T15:52:14.024000Z",
     "edited": "2014-12-20T21:17:50.317000Z",
-    "url": "https://swapi.co/api/people/6/"
+    "url": "https://swapi.co/api/unsorted/6/"
   },
   {
     "name": "Beru Whitesun lars",
@@ -187,7 +187,7 @@ const people = [
     "starships": [],
     "created": "2014-12-10T15:53:41.121000Z",
     "edited": "2014-12-20T21:17:50.319000Z",
-    "url": "https://swapi.co/api/people/7/"
+    "url": "https://swapi.co/api/unsorted/7/"
   },
   {
     "name": "R5-D4",
@@ -209,7 +209,7 @@ const people = [
     "starships": [],
     "created": "2014-12-10T15:57:50.959000Z",
     "edited": "2014-12-20T21:17:50.321000Z",
-    "url": "https://swapi.co/api/people/8/"
+    "url": "https://swapi.co/api/unsorted/8/"
   },
   {
     "name": "Biggs Darklighter",
@@ -233,7 +233,7 @@ const people = [
     ],
     "created": "2014-12-10T15:59:50.509000Z",
     "edited": "2014-12-20T21:17:50.323000Z",
-    "url": "https://swapi.co/api/people/9/"
+    "url": "https://swapi.co/api/unsorted/9/"
   },
   {
     "name": "Obi-Wan Kenobi",
@@ -268,11 +268,11 @@ const people = [
     ],
     "created": "2014-12-10T16:16:29.192000Z",
     "edited": "2014-12-20T21:17:50.325000Z",
-    "url": "https://swapi.co/api/people/10/"
+    "url": "https://swapi.co/api/unsorted/10/"
   }
 ];
 
-const peopleSortedAlphabetically = [{
+const alphabetically = [{
   name: 'Beru Whitesun lars',
   height: '165',
   mass: '75',
@@ -291,7 +291,7 @@ const peopleSortedAlphabetically = [{
   starships: [],
   created: '2014-12-10T15:53:41.121000Z',
   edited: '2014-12-20T21:17:50.319000Z',
-  url: 'https://swapi.co/api/people/7/'
+  url: 'https://swapi.co/api/unsorted/7/'
 },
   {
     name: 'Biggs Darklighter',
@@ -309,7 +309,7 @@ const peopleSortedAlphabetically = [{
     starships: ['https://swapi.co/api/starships/12/'],
     created: '2014-12-10T15:59:50.509000Z',
     edited: '2014-12-20T21:17:50.323000Z',
-    url: 'https://swapi.co/api/people/9/'
+    url: 'https://swapi.co/api/unsorted/9/'
   },
   {
     name: 'C-3PO',
@@ -333,7 +333,7 @@ const peopleSortedAlphabetically = [{
     starships: [],
     created: '2014-12-10T15:10:51.357000Z',
     edited: '2014-12-20T21:17:50.309000Z',
-    url: 'https://swapi.co/api/people/2/'
+    url: 'https://swapi.co/api/unsorted/2/'
   },
   {
     name: 'Darth Vader',
@@ -355,7 +355,7 @@ const peopleSortedAlphabetically = [{
     starships: ['https://swapi.co/api/starships/13/'],
     created: '2014-12-10T15:18:20.704000Z',
     edited: '2014-12-20T21:17:50.313000Z',
-    url: 'https://swapi.co/api/people/4/'
+    url: 'https://swapi.co/api/unsorted/4/'
   },
   {
     name: 'Leia Organa',
@@ -378,7 +378,7 @@ const peopleSortedAlphabetically = [{
     starships: [],
     created: '2014-12-10T15:20:09.791000Z',
     edited: '2014-12-20T21:17:50.315000Z',
-    url: 'https://swapi.co/api/people/5/'
+    url: 'https://swapi.co/api/unsorted/5/'
   },
   {
     name: 'Luke Skywalker',
@@ -405,7 +405,7 @@ const peopleSortedAlphabetically = [{
         'https://swapi.co/api/starships/22/'],
     created: '2014-12-09T13:50:51.644000Z',
     edited: '2014-12-20T21:17:56.891000Z',
-    url: 'https://swapi.co/api/people/1/'
+    url: 'https://swapi.co/api/unsorted/1/'
   },
   {
     name: 'Obi-Wan Kenobi',
@@ -434,7 +434,7 @@ const peopleSortedAlphabetically = [{
         'https://swapi.co/api/starships/74/'],
     created: '2014-12-10T16:16:29.192000Z',
     edited: '2014-12-20T21:17:50.325000Z',
-    url: 'https://swapi.co/api/people/10/'
+    url: 'https://swapi.co/api/unsorted/10/'
   },
   {
     name: 'Owen Lars',
@@ -455,7 +455,7 @@ const peopleSortedAlphabetically = [{
     starships: [],
     created: '2014-12-10T15:52:14.024000Z',
     edited: '2014-12-20T21:17:50.317000Z',
-    url: 'https://swapi.co/api/people/6/'
+    url: 'https://swapi.co/api/unsorted/6/'
   },
   {
     name: 'R2-D2',
@@ -480,7 +480,7 @@ const peopleSortedAlphabetically = [{
     starships: [],
     created: '2014-12-10T15:11:50.376000Z',
     edited: '2014-12-20T21:17:50.311000Z',
-    url: 'https://swapi.co/api/people/3/'
+    url: 'https://swapi.co/api/unsorted/3/'
   },
   {
     name: 'R5-D4',
@@ -498,10 +498,10 @@ const peopleSortedAlphabetically = [{
     starships: [],
     created: '2014-12-10T15:57:50.959000Z',
     edited: '2014-12-20T21:17:50.321000Z',
-    url: 'https://swapi.co/api/people/8/'
+    url: 'https://swapi.co/api/unsorted/8/'
   }];
 
-const peopleSortedByHeight = [{
+const byHeight = [{
   name: 'Darth Vader',
   height: '202',
   mass: '136',
@@ -521,7 +521,7 @@ const peopleSortedByHeight = [{
   starships: ['https://swapi.co/api/starships/13/'],
   created: '2014-12-10T15:18:20.704000Z',
   edited: '2014-12-20T21:17:50.313000Z',
-  url: 'https://swapi.co/api/people/4/'
+  url: 'https://swapi.co/api/unsorted/4/'
 },
   {
     name: 'Biggs Darklighter',
@@ -539,7 +539,7 @@ const peopleSortedByHeight = [{
     starships: ['https://swapi.co/api/starships/12/'],
     created: '2014-12-10T15:59:50.509000Z',
     edited: '2014-12-20T21:17:50.323000Z',
-    url: 'https://swapi.co/api/people/9/'
+    url: 'https://swapi.co/api/unsorted/9/'
   },
   {
     name: 'Obi-Wan Kenobi',
@@ -568,7 +568,7 @@ const peopleSortedByHeight = [{
         'https://swapi.co/api/starships/74/'],
     created: '2014-12-10T16:16:29.192000Z',
     edited: '2014-12-20T21:17:50.325000Z',
-    url: 'https://swapi.co/api/people/10/'
+    url: 'https://swapi.co/api/unsorted/10/'
   },
   {
     name: 'Owen Lars',
@@ -589,7 +589,7 @@ const peopleSortedByHeight = [{
     starships: [],
     created: '2014-12-10T15:52:14.024000Z',
     edited: '2014-12-20T21:17:50.317000Z',
-    url: 'https://swapi.co/api/people/6/'
+    url: 'https://swapi.co/api/unsorted/6/'
   },
   {
     name: 'Luke Skywalker',
@@ -616,7 +616,7 @@ const peopleSortedByHeight = [{
         'https://swapi.co/api/starships/22/'],
     created: '2014-12-09T13:50:51.644000Z',
     edited: '2014-12-20T21:17:56.891000Z',
-    url: 'https://swapi.co/api/people/1/'
+    url: 'https://swapi.co/api/unsorted/1/'
   },
   {
     name: 'C-3PO',
@@ -640,7 +640,7 @@ const peopleSortedByHeight = [{
     starships: [],
     created: '2014-12-10T15:10:51.357000Z',
     edited: '2014-12-20T21:17:50.309000Z',
-    url: 'https://swapi.co/api/people/2/'
+    url: 'https://swapi.co/api/unsorted/2/'
   },
   {
     name: 'Beru Whitesun lars',
@@ -661,7 +661,7 @@ const peopleSortedByHeight = [{
     starships: [],
     created: '2014-12-10T15:53:41.121000Z',
     edited: '2014-12-20T21:17:50.319000Z',
-    url: 'https://swapi.co/api/people/7/'
+    url: 'https://swapi.co/api/unsorted/7/'
   },
   {
     name: 'Leia Organa',
@@ -684,7 +684,7 @@ const peopleSortedByHeight = [{
     starships: [],
     created: '2014-12-10T15:20:09.791000Z',
     edited: '2014-12-20T21:17:50.315000Z',
-    url: 'https://swapi.co/api/people/5/'
+    url: 'https://swapi.co/api/unsorted/5/'
   },
   {
     name: 'R5-D4',
@@ -702,7 +702,7 @@ const peopleSortedByHeight = [{
     starships: [],
     created: '2014-12-10T15:57:50.959000Z',
     edited: '2014-12-20T21:17:50.321000Z',
-    url: 'https://swapi.co/api/people/8/'
+    url: 'https://swapi.co/api/unsorted/8/'
   },
   {
     name: 'R2-D2',
@@ -727,11 +727,10 @@ const peopleSortedByHeight = [{
     starships: [],
     created: '2014-12-10T15:11:50.376000Z',
     edited: '2014-12-20T21:17:50.311000Z',
-    url: 'https://swapi.co/api/people/3/'
+    url: 'https://swapi.co/api/unsorted/3/'
   }]
 
-const peopleSortedByMass = [{
-  name: 'Darth Vader',
+const byMass = [{ name: 'Darth Vader',
   height: '202',
   mass: '136',
   hair_color: 'none',
@@ -741,19 +740,17 @@ const peopleSortedByMass = [{
   gender: 'male',
   homeworld: 'https://swapi.co/api/planets/1/',
   films:
-    ['https://swapi.co/api/films/2/',
+    [ 'https://swapi.co/api/films/2/',
       'https://swapi.co/api/films/6/',
       'https://swapi.co/api/films/3/',
-      'https://swapi.co/api/films/1/'],
-  species: ['https://swapi.co/api/species/1/'],
+      'https://swapi.co/api/films/1/' ],
+  species: [ 'https://swapi.co/api/species/1/' ],
   vehicles: [],
-  starships: ['https://swapi.co/api/starships/13/'],
+  starships: [ 'https://swapi.co/api/starships/13/' ],
   created: '2014-12-10T15:18:20.704000Z',
   edited: '2014-12-20T21:17:50.313000Z',
-  url: 'https://swapi.co/api/people/4/'
-},
-  {
-    name: 'Owen Lars',
+  url: 'https://swapi.co/api/unsorted/4/' },
+  { name: 'Owen Lars',
     height: '178',
     mass: '120',
     hair_color: 'brown, grey',
@@ -763,18 +760,16 @@ const peopleSortedByMass = [{
     gender: 'male',
     homeworld: 'https://swapi.co/api/planets/1/',
     films:
-      ['https://swapi.co/api/films/5/',
+      [ 'https://swapi.co/api/films/5/',
         'https://swapi.co/api/films/6/',
-        'https://swapi.co/api/films/1/'],
-    species: ['https://swapi.co/api/species/1/'],
+        'https://swapi.co/api/films/1/' ],
+    species: [ 'https://swapi.co/api/species/1/' ],
     vehicles: [],
     starships: [],
     created: '2014-12-10T15:52:14.024000Z',
     edited: '2014-12-20T21:17:50.317000Z',
-    url: 'https://swapi.co/api/people/6/'
-  },
-  {
-    name: 'Biggs Darklighter',
+    url: 'https://swapi.co/api/unsorted/6/' },
+  { name: 'Biggs Darklighter',
     height: '183',
     mass: '84',
     hair_color: 'black',
@@ -783,16 +778,14 @@ const peopleSortedByMass = [{
     birth_year: '24BBY',
     gender: 'male',
     homeworld: 'https://swapi.co/api/planets/1/',
-    films: ['https://swapi.co/api/films/1/'],
-    species: ['https://swapi.co/api/species/1/'],
+    films: [ 'https://swapi.co/api/films/1/' ],
+    species: [ 'https://swapi.co/api/species/1/' ],
     vehicles: [],
-    starships: ['https://swapi.co/api/starships/12/'],
+    starships: [ 'https://swapi.co/api/starships/12/' ],
     created: '2014-12-10T15:59:50.509000Z',
     edited: '2014-12-20T21:17:50.323000Z',
-    url: 'https://swapi.co/api/people/9/'
-  },
-  {
-    name: 'Luke Skywalker',
+    url: 'https://swapi.co/api/unsorted/9/' },
+  { name: 'Luke Skywalker',
     height: '172',
     mass: '77',
     hair_color: 'blond',
@@ -802,24 +795,22 @@ const peopleSortedByMass = [{
     gender: 'male',
     homeworld: 'https://swapi.co/api/planets/1/',
     films:
-      ['https://swapi.co/api/films/2/',
+      [ 'https://swapi.co/api/films/2/',
         'https://swapi.co/api/films/6/',
         'https://swapi.co/api/films/3/',
         'https://swapi.co/api/films/1/',
-        'https://swapi.co/api/films/7/'],
-    species: ['https://swapi.co/api/species/1/'],
+        'https://swapi.co/api/films/7/' ],
+    species: [ 'https://swapi.co/api/species/1/' ],
     vehicles:
-      ['https://swapi.co/api/vehicles/14/',
-        'https://swapi.co/api/vehicles/30/'],
+      [ 'https://swapi.co/api/vehicles/14/',
+        'https://swapi.co/api/vehicles/30/' ],
     starships:
-      ['https://swapi.co/api/starships/12/',
-        'https://swapi.co/api/starships/22/'],
+      [ 'https://swapi.co/api/starships/12/',
+        'https://swapi.co/api/starships/22/' ],
     created: '2014-12-09T13:50:51.644000Z',
     edited: '2014-12-20T21:17:56.891000Z',
-    url: 'https://swapi.co/api/people/1/'
-  },
-  {
-    name: 'Obi-Wan Kenobi',
+    url: 'https://swapi.co/api/unsorted/1/' },
+  { name: 'Obi-Wan Kenobi',
     height: '182',
     mass: '77',
     hair_color: 'auburn, white',
@@ -829,50 +820,24 @@ const peopleSortedByMass = [{
     gender: 'male',
     homeworld: 'https://swapi.co/api/planets/20/',
     films:
-      ['https://swapi.co/api/films/2/',
+      [ 'https://swapi.co/api/films/2/',
         'https://swapi.co/api/films/5/',
         'https://swapi.co/api/films/4/',
         'https://swapi.co/api/films/6/',
         'https://swapi.co/api/films/3/',
-        'https://swapi.co/api/films/1/'],
-    species: ['https://swapi.co/api/species/1/'],
-    vehicles: ['https://swapi.co/api/vehicles/38/'],
+        'https://swapi.co/api/films/1/' ],
+    species: [ 'https://swapi.co/api/species/1/' ],
+    vehicles: [ 'https://swapi.co/api/vehicles/38/' ],
     starships:
-      ['https://swapi.co/api/starships/48/',
+      [ 'https://swapi.co/api/starships/48/',
         'https://swapi.co/api/starships/59/',
         'https://swapi.co/api/starships/64/',
         'https://swapi.co/api/starships/65/',
-        'https://swapi.co/api/starships/74/'],
+        'https://swapi.co/api/starships/74/' ],
     created: '2014-12-10T16:16:29.192000Z',
     edited: '2014-12-20T21:17:50.325000Z',
-    url: 'https://swapi.co/api/people/10/'
-  },
-  {
-    name: 'C-3PO',
-    height: '167',
-    mass: '75',
-    hair_color: 'n/a',
-    skin_color: 'gold',
-    eye_color: 'yellow',
-    birth_year: '112BBY',
-    gender: 'n/a',
-    homeworld: 'https://swapi.co/api/planets/1/',
-    films:
-      ['https://swapi.co/api/films/2/',
-        'https://swapi.co/api/films/5/',
-        'https://swapi.co/api/films/4/',
-        'https://swapi.co/api/films/6/',
-        'https://swapi.co/api/films/3/',
-        'https://swapi.co/api/films/1/'],
-    species: ['https://swapi.co/api/species/2/'],
-    vehicles: [],
-    starships: [],
-    created: '2014-12-10T15:10:51.357000Z',
-    edited: '2014-12-20T21:17:50.309000Z',
-    url: 'https://swapi.co/api/people/2/'
-  },
-  {
-    name: 'Beru Whitesun lars',
+    url: 'https://swapi.co/api/unsorted/10/' },
+  { name: 'Beru Whitesun lars',
     height: '165',
     mass: '75',
     hair_color: 'brown',
@@ -882,18 +847,38 @@ const peopleSortedByMass = [{
     gender: 'female',
     homeworld: 'https://swapi.co/api/planets/1/',
     films:
-      ['https://swapi.co/api/films/5/',
+      [ 'https://swapi.co/api/films/5/',
         'https://swapi.co/api/films/6/',
-        'https://swapi.co/api/films/1/'],
-    species: ['https://swapi.co/api/species/1/'],
+        'https://swapi.co/api/films/1/' ],
+    species: [ 'https://swapi.co/api/species/1/' ],
     vehicles: [],
     starships: [],
     created: '2014-12-10T15:53:41.121000Z',
     edited: '2014-12-20T21:17:50.319000Z',
-    url: 'https://swapi.co/api/people/7/'
-  },
-  {
-    name: 'Leia Organa',
+    url: 'https://swapi.co/api/unsorted/7/' },
+  { name: 'C-3PO',
+    height: '167',
+    mass: '75',
+    hair_color: 'n/a',
+    skin_color: 'gold',
+    eye_color: 'yellow',
+    birth_year: '112BBY',
+    gender: 'n/a',
+    homeworld: 'https://swapi.co/api/planets/1/',
+    films:
+      [ 'https://swapi.co/api/films/2/',
+        'https://swapi.co/api/films/5/',
+        'https://swapi.co/api/films/4/',
+        'https://swapi.co/api/films/6/',
+        'https://swapi.co/api/films/3/',
+        'https://swapi.co/api/films/1/' ],
+    species: [ 'https://swapi.co/api/species/2/' ],
+    vehicles: [],
+    starships: [],
+    created: '2014-12-10T15:10:51.357000Z',
+    edited: '2014-12-20T21:17:50.309000Z',
+    url: 'https://swapi.co/api/unsorted/2/' },
+  { name: 'Leia Organa',
     height: '150',
     mass: '49',
     hair_color: 'brown',
@@ -903,20 +888,18 @@ const peopleSortedByMass = [{
     gender: 'female',
     homeworld: 'https://swapi.co/api/planets/2/',
     films:
-      ['https://swapi.co/api/films/2/',
+      [ 'https://swapi.co/api/films/2/',
         'https://swapi.co/api/films/6/',
         'https://swapi.co/api/films/3/',
         'https://swapi.co/api/films/1/',
-        'https://swapi.co/api/films/7/'],
-    species: ['https://swapi.co/api/species/1/'],
-    vehicles: ['https://swapi.co/api/vehicles/30/'],
+        'https://swapi.co/api/films/7/' ],
+    species: [ 'https://swapi.co/api/species/1/' ],
+    vehicles: [ 'https://swapi.co/api/vehicles/30/' ],
     starships: [],
     created: '2014-12-10T15:20:09.791000Z',
     edited: '2014-12-20T21:17:50.315000Z',
-    url: 'https://swapi.co/api/people/5/'
-  },
-  {
-    name: 'R2-D2',
+    url: 'https://swapi.co/api/unsorted/5/' },
+  { name: 'R2-D2',
     height: '96',
     mass: '32',
     hair_color: 'n/a',
@@ -926,22 +909,20 @@ const peopleSortedByMass = [{
     gender: 'n/a',
     homeworld: 'https://swapi.co/api/planets/8/',
     films:
-      ['https://swapi.co/api/films/2/',
+      [ 'https://swapi.co/api/films/2/',
         'https://swapi.co/api/films/5/',
         'https://swapi.co/api/films/4/',
         'https://swapi.co/api/films/6/',
         'https://swapi.co/api/films/3/',
         'https://swapi.co/api/films/1/',
-        'https://swapi.co/api/films/7/'],
-    species: ['https://swapi.co/api/species/2/'],
+        'https://swapi.co/api/films/7/' ],
+    species: [ 'https://swapi.co/api/species/2/' ],
     vehicles: [],
     starships: [],
     created: '2014-12-10T15:11:50.376000Z',
     edited: '2014-12-20T21:17:50.311000Z',
-    url: 'https://swapi.co/api/people/3/'
-  },
-  {
-    name: 'R5-D4',
+    url: 'https://swapi.co/api/unsorted/3/' },
+  { name: 'R5-D4',
     height: '97',
     mass: '32',
     hair_color: 'n/a',
@@ -950,18 +931,17 @@ const peopleSortedByMass = [{
     birth_year: 'unknown',
     gender: 'n/a',
     homeworld: 'https://swapi.co/api/planets/1/',
-    films: ['https://swapi.co/api/films/1/'],
-    species: ['https://swapi.co/api/species/2/'],
+    films: [ 'https://swapi.co/api/films/1/' ],
+    species: [ 'https://swapi.co/api/species/2/' ],
     vehicles: [],
     starships: [],
     created: '2014-12-10T15:57:50.959000Z',
     edited: '2014-12-20T21:17:50.321000Z',
-    url: 'https://swapi.co/api/people/8/'
-  }];
+    url: 'https://swapi.co/api/unsorted/8/' } ];
 
 module.exports = {
-  people,
-  peopleSortedAlphabetically,
-  peopleSortedByHeight,
-  peopleSortedByMass
+  unsorted,
+  alphabetically,
+  byHeight,
+  byMass
 };
