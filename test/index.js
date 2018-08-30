@@ -1,20 +1,17 @@
 const assert = require('assert');
 const axios = require('axios');
 const chai = require('chai');
+const http = require('http');
 const expect = chai.expect;
 
 const people = require('./sample/sample_people');
 const server = require('../index.js');
-
-const PORT = 8081;
+const PORT = 3001;
 
 describe('HTTP Server Test', function () {
-  before(function () {
-    server.listen(PORT);
-  });
 
   after(function () {
-    server.close();
+    server.server.close();
   });
 
   describe('API endpoints', function () {
@@ -48,17 +45,17 @@ describe('HTTP Server Test', function () {
   describe('API Functions', function () {
     describe('Sort', function () {
       it('should sort people by name', function (done) {
-        expect(server.sort(people.unsorted, 'name')).to.deep.equal(people.alphabetically);
+        expect(server.sort([...people.unsorted], 'name')).to.deep.equal(people.alphabetically);
         done()
       })
         .timeout(6000);
       it('should sort people by mass', function (done) {
-        expect(server.sort(people.unsorted, 'mass')).to.deep.equal(people.byMass);
+        expect(server.sort([...people.unsorted], 'mass')).to.deep.equal(people.byMass);
         done()
       })
         .timeout(6000);
       it('should sort people by height', function (done) {
-        expect(server.sort(people.unsorted, 'height')).to.deep.equal(people.byHeight);
+        expect(server.sort([...people.unsorted], 'height')).to.deep.equal(people.byHeight);
         done()
       })
         .timeout(6000);

@@ -28,7 +28,7 @@ App.get('/planets', async (req, res) => {
   res.json(result)
 });
 
-App.listen(PORT, () => console.log(`listening on port: ${PORT}`));
+let server = App.listen(PORT, () => console.log(`listening on port: ${PORT}`));
 
 // API Functions
 
@@ -97,6 +97,7 @@ async function getPlanets(result = [], page = 1) {
 }
 
 function sort(people, attribute) {
+  //console.log('sort by ',attribute, people.length)
   switch (attribute) {
     case 'name':
       return people.sort(function (a, b) {
@@ -106,14 +107,21 @@ function sort(people, attribute) {
       });
       break;
     case 'height':
-      return people.sort((a, b) => {
-        return b.height - a.height;
+      //console.log('height before', people.length,people[0],people[people.length-1])
+      let heightP = people.sort((a, b) => {
+        let aHeight = a.height,
+          bHeight = b.height;
+        if(aHeight === 'unknown') aHeight = 0;
+        if(bHeight === 'unknown') bHeight = 0;
+        return Number.parseInt(bHeight) - Number.parseInt(aHeight);
       });
+      //console.log('height after',heightP.length,heightP[0], heightP[heightP.length-1])
+      return heightP;
       break;
     case 'mass':
       return people.sort((a, b) => {
         let aMass = a.mass,
-            bMass = b.mass
+            bMass = b.mass;
         if(aMass === 'unknown') aMass = 0;
         if(bMass === 'unknown') bMass = 0;
         return bMass - aMass;
@@ -125,24 +133,11 @@ function sort(people, attribute) {
 }
 
 
-// Testing Functions
-httpServer = require('http').createServer(App);
-
-// close destroys the server.
-function close() {
-  httpServer.close();
-}
-
-function listen(port) {
-  console.log('Listening on: ' + port);
-  httpServer.listen(port);
-}
 
 module.exports = {
   sendPeople,
   getPlanets,
   getPeople,
   sort,
-  close,
-  listen
+  server,
 };
